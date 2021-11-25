@@ -25,6 +25,7 @@ buildscript{
 plugins{
     id 'org.jetbrains.kotlin.jvm' version '1.6.0-RC'
     id "org.jetbrains.kotlin.kapt" version "1.6.0-RC"
+    id "org.sonarqube" version "3.3"
 }
 
 allprojects{
@@ -497,6 +498,14 @@ task deployAll{
         dependsOn "server:deploy"
         dependsOn "android:deploy"
     }
+}
+
+sonarqube {
+  properties {
+    property "sonar.projectKey", "AntoDeFlo_Mindustry"
+    property "sonar.organization", "antodeflo"
+    property "sonar.host.url", "https://sonarcloud.io"
+  }
 }
 
 task resolveDependencies{
